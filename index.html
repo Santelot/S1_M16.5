@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+             if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                  document.getElementById('activity-5').style.display = 'none';
+                  document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M16.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+              <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Dar la bienvenida y establecer el tono para la misión.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy enfrentaremos un desafío creativo y técnico: diseñar una casa utilizando únicamente generadores de formas en TinkerCAD. ¡Será un gran reto, pero confío en su creatividad!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo se sienten?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo se sienten hoy. Si están emocionados por este reto, den dos palmadas. Si están tranquilos pero listos, sonrían y miren a un compañero."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Agradecimiento".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos para agradecer la oportunidad de aprender y crear juntos. ¡Gracias por estar aquí y por su compromiso, Genios!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy trabajaremos en dos objetivos importantes: 1. Utilizar exclusivamente generadores de formas en TinkerCAD. 2. Diseñar una casa creativa que refleje su estilo único. ¡Manos a la obra!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤣 Actividad 2: State Change ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Introducir un juego para activar el pensamiento rápido y creativo.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Introducción al Juego".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de entrar al reto, hagamos un ejercicio rápido para encender nuestras mentes. Cada uno dirá una palabra que les inspire el concepto de creatividad. ¡Sean espontáneos y diviértanse!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Tiempo para Participar".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente, Genios! Este juego nos ayuda a despertar nuestra imaginación y a prepararnos para abordar desafíos creativos con entusiasmo y agilidad mental."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 5.5 minutos</div>
+        <div class="subtitle">Fomentar la colaboración y la organización del trabajo.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+             <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, continuaremos trabajando con los mismos equipos que formamos en la misión anterior. Esto les permitirá fortalecer la comunicación y aprovechar la dinámica que ya tienen. ¡Organícense y prepárense!"</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Tiempo para Organizarse".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "Metodología Kanban".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Usaremos nuevamente la metodología Kanban. Accedan a Scrumboard.org y creen un tablero nuevo. Dividan las tareas necesarias para cumplir con el desafío de hoy y asegúrense de que todos en el equipo tengan un rol claro. ¡Organización es la clave!"</td>
+           </tr>
+           <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 12 "Tiempo para Configurar Tablero".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+           </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 34 minutos</div>
+        <div class="subtitle">Diseñar una casa mexicana en TinkerCAD usando solo generadores de formas.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Introducción al Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora de aplicar todo lo que hemos aprendido en un desafío creativo. Diseñarán algo especial que refleje cultura, estilo y técnica: ¡una casa mexicana!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 14 "Explicación del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy, su reto consiste en diseñar en TinkerCAD una casa mexicana. Tienen completa libertad creativa para incluir los elementos y detalles que quieran, pero con una restricción: deben usar únicamente formas generadas, sin formas básicas. Esto les permitirá experimentar con las herramientas avanzadas y llevar su creatividad al siguiente nivel. Denle personalidad y estilo único a su diseño. ¡Es momento de crear algo increíble!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (25 minutos):</strong> Proyectar Diapositiva 15 "Tiempo para Diseñar".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 4 (1 minutos):</strong> Proyectar Diapositiva 16 "Actividad de Comparación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, junten su trabajo con el equipo más cercano. Comparen sus casas y expliquen cómo usaron las herramientas de corte y los generadores de formas para crear sus diseños. Hablen sobre los retos que encontraron y las soluciones que idearon. Esta es una gran oportunidad para aprender nuevas ideas y mejorar sus habilidades."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 5 (5 minutos):</strong> Proyectar Diapositiva 17 "Tiempo para Compartir Diseños".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+           </tr>
+             <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 18 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos logrado cumplir todos los objetivos de esta misión: 1. Usar exclusivamente formas generadas en TinkerCAD. 2. Diseñar una casa mexicana creativa y única. 3. Compartir y reflexionar sobre los procesos utilizados para el diseño. ¡Felicidades! Han demostrado que son diseñadores 3D excepcionales."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Premiación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios, excelente trabajo hoy! Cada uno de ustedes ha demostrado creatividad, técnica y colaboración en este reto. Por su esfuerzo y dedicación, todos ganan Mon-e. ¡Sigan practicando y llevando sus ideas a nuevos niveles!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Fomentar el respeto y la organización del espacio de trabajo al finalizar la misión.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minuto):</strong> Proyectar Diapositiva 20 "Honor the Dojo".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de cerrar la sesión, pongamos todo en orden. Por favor, regresen las Magic Tablets y asegúrense de dejar limpio su espacio de trabajo. Gracias por su esfuerzo y dedicación hoy. ¡Gran trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
